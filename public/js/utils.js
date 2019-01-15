@@ -84,7 +84,7 @@ function submitTransaction () {
     if (err) {
       alert(err)
     } else {
-      window.location.href = '/tx/pending'
+      window.location.href = '/explorer/tx/pending'
     }
   })
 }
