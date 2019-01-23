@@ -10,7 +10,7 @@ async function enableEthereum () {
       metamask = undefined
     }
   } else if (window.web3) {
-    alert('Legacy web3 detected!')
+    console.log('Legacy web3 detected!')
     metamask = new Web3(window.web3.currentProvider)
   } else {
     alert('Non-Ethereum browser detected!')
