@@ -15,7 +15,8 @@ html(lang="en")
     link(href=config.bootstrapUrl, rel="stylesheet", crossorigin="anonymous")    
     link(rel='stylesheet', href='stylesheets/style.css')
     script(src='js/libwabt.js')
-    script(src='js/compile2wast.js')
+    script(src='js/wasmutils.js')
+    script(src='js/utils.js')
   script.
     metamask = window.web3
   body
@@ -49,6 +50,8 @@ html(lang="en")
                   a(href='tx/submit') Submit Tx
                 li
                   a(href='tx/submit_raw') Submit Raw Tx
+                li
+                  a(href='deploy') Deploy Wast Contract
                 // hide verify links
                 //li
                 //  a(href='contract/verify') Verify Contract 

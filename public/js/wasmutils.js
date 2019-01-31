@@ -5,6 +5,11 @@ function hex2buf (hex) {
   return typedArray
 }
 
+// buffer is an ArrayBuffer
+function buf2hex(buffer) {
+  return Array.prototype.map.call(new Uint8Array(buffer), x => ('00' + x.toString(16)).slice(-2)).join('');
+}
+
 // note that the readWasm function is broken on wabt.js 1.0.5.
 // use wabt.js 1.0.0
 function wasm2wast (wasm) {
@@ -24,4 +29,12 @@ function wasm2wast (wasm) {
   }
 
   return ret
+}
+
+function wast2wasm(wast) {
+  try {
+    return this.wabt.parseWat('module.wast', wast)
+  } catch (e) {
+    alert(e)
+  }
 }
