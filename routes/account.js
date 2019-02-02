@@ -4,7 +4,7 @@ var util   = require('ethereumjs-util');
 
 var async = require('async');
 var Web3 = require('web3');
-var web3extended = require('web3-extended');
+var web3complete = require('web3-complete');
 
 var EWASM_BYTES = '0x0061736d01';
 var nodeVersion = '';
@@ -14,7 +14,7 @@ router.get('/:account', function(req, res, next) {
 
   var config = req.app.get('config');
   var web3 = new Web3();
-  web3extended(web3);
+  web3complete(web3);
   web3.setProvider(config.provider);
 
   var db = req.app.get('db');

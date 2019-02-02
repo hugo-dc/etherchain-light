@@ -5,7 +5,7 @@ const RateLimit = require('express-rate-limit');
 
 var async = require('async');
 var Web3 = require('web3');
-var web3extended = require('web3-extended');
+var web3complete = require('web3-complete');
 
 const ETHER = 1e18
 const sendAmount = 1 * ETHER;
@@ -22,7 +22,7 @@ var data = {
 router.get('/', function(req, res, next) {
   var config = req.app.get('config');
   var web3 = new Web3();
-  web3extended(web3);
+  web3complete(web3);
   web3.setProvider(config.provider);
   data.faucetAddress = config.faucetAddress;
   data.faucetBalance = 0;
@@ -69,7 +69,7 @@ router.post('/', function(req, res, next) {
 
   var userAccount = req.body.useraccount.trim().toLowerCase();
   var web3 = new Web3();
-  web3extended(web3);
+  web3complete(web3);
   web3.setProvider(config.provider);
 
   async.waterfall([
