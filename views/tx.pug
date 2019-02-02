@@ -24,10 +24,12 @@ block content
       td
         if tx.to
           a(href="account/" + tx.to) #{nameformatter.format(tx.to)}
-        else
+        else if tx.contractAddress
           | New Contract (deployment address:
           a(href="account/" + tx.contractAddress) #{nameformatter.format(tx.contractAddress)}
           | )
+        else
+          | Pending contract deployment
     tr
       td Amount:
       td #{ethformatter(tx.value)}
