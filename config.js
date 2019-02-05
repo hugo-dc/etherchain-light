@@ -19,6 +19,10 @@ var config = function (endpoint) {
   }
   this.faucetAddress = "0x9fa4f23079bae7a7a5c392b67e18093310315bfc";
   //this.privateKey = new Buffer('<insert_private_key_here>', 'hex');
+
+  // look for transactions the last N blocks
+  // recommended: aleth=10, geth=128
+  this.blockCount = 128;
 }
 
 module.exports = config;

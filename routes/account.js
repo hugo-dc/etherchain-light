@@ -20,10 +20,8 @@ router.get('/:account', function(req, res, next) {
   var db = req.app.get('db');
 
   var data = {};
-  var BLOCK_COUNT = 1000;
   
   nodeVersion = req.app.locals.nodeStatus.version;
-
                                                   
   async.waterfall([
     function(callback) {
@@ -33,9 +31,9 @@ router.get('/:account', function(req, res, next) {
     }, function(lastBlock, callback) {
       data.lastBlock = lastBlock.number;
       data.lastBlockHash = lastBlock.hash;
-      //limits the from block to -1000 blocks ago if block count is greater than 1000
-      if (data.lastBlock > BLOCK_COUNT) {
-        data.fromBlock = data.lastBlock - BLOCK_COUNT;
+
+      if (data.lastBlock > config.blockCount) {
+        data.fromBlock = data.lastBlock - config.blockCount;
       } else {
         data.fromBlock = 0x00;
       }
@@ -117,15 +115,13 @@ router.get('/:account', function(req, res, next) {
     }, function(callback) {
       var blocks = [];
  
-      var blockCount = BLOCK_COUNT;
+      var blockCount = config.blockCount;
       var address = req.params.account;
 
       if (nodeVersion.includes('aleth')) {
-        blockCount = 50; // aleth's jsonrpc script does not support looking into 1000 blocks
         if(!address.includes('0x')) {
           address = '0x' + address;
         }
-        
         if (data.lastBlock < blockCount) {
           blockCount = data.lastBlock;
         }

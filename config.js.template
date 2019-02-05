@@ -15,7 +15,8 @@ var config = function (endpoint) {
     "0x000000000000000000000000000000000000000b": "evm2wasm contract"
   }
   this.faucetAddress = "{faucetAddress}";
-  this.privateKey = new Buffer('{privateKey}', 'hex');  
+  this.privateKey = new Buffer('{privateKey}', 'hex');
+  this.blockCount = {blockCount};
 }
 
 module.exports = config;
