@@ -27,7 +27,9 @@ router.get('/', function(req, res, next) {
   data.faucetAddress = config.faucetAddress;
   data.faucetBalance = 0;
   data.transaction = null;
-  data.errorMessage = null; 
+  data.errorMessage = null;
+  data.chainId = config.chainId;
+  data.rpcUrlSuggestion = config.rpcUrlSuggestion;
 
   async.waterfall([
     function(callback) {

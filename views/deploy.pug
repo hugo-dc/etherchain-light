@@ -15,4 +15,5 @@ block content
     window.addEventListener('load', async () => {
       console.log('enabling ethereum...');
       await enableEthereum();
+      validateChainId(!{JSON.stringify(data.chainId)}, !{JSON.stringify(data.rpcUrlSuggestion)});
     })

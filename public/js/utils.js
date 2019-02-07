@@ -89,3 +89,9 @@ function submitTransaction () {
     }
   })
 }
+
+function validateChainId(chainId, rpcUrlSuggestion) {
+  if (metamask.version.network !== chainId) {
+    alert(`WARNING: Metamask is connected to a different Ethereum network\nPlease configure the correct RPC endpoint:\n${rpcUrlSuggestion}`);
+  }
+}
