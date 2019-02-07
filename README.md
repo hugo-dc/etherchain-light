@@ -50,6 +50,11 @@ Supported Ethereum backend nodes: Parity (Geth is currently not supported as it 
 7. Start the explorer: `npm start`
 8. Browse to `http://localhost:3000`
 
+In the explorer's index page and `/account/<ethereum_address>` there is a list
+of recent transactions, these are the last transactions found in the last `128`
+blocks, this can be configured in `config.js`, changing the value of
+`this.blockCount`.
+
 By default `etherchain` connects to the local rpc server `localhost:8545`, you
 can manually specify a remote rpc server using `npm start -- --rpc=<remote_host>:<port>`.
 

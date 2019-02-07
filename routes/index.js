@@ -6,7 +6,6 @@ var Web3 = require('web3');
 var web3complete = require('web3-complete');
 
 router.get('/', function(req, res, next) {
-
   var config = req.app.get('config');
   var web3 = new Web3();
   web3complete(web3);
@@ -20,13 +19,13 @@ router.get('/', function(req, res, next) {
     }, function(lastBlock, callback) {
       var blocks = [];
 
-      var blockCount = 128;
-
-      if (lastBlock.number - blockCount < 0) {
-        blockCount = lastBlock.number + 1;
+      // checks if number of blocks in chain is less than configured blocks
+      var totalBlocks = config.blockCount;
+      if (lastBlock.number - config.blockCount < 0) {
+        totalBlocks = lastBlock.number + 1;
       }
 
-      async.times(blockCount, function(n, next) {
+      async.times(totalBlocks, function(n, next) {
         web3.eth.getBlock(lastBlock.number - n, true, function(err, block) {
           next(err, block);
         });
@@ -53,7 +52,7 @@ router.get('/', function(req, res, next) {
     if (blocks.length > 10) {
       blocks = blocks.slice(0,10);
     }
-    res.render('index', { blocks: blocks, txs: txs });
+    res.render('index', { blocks: blocks, txs: txs, blockCount: config.blockCount });
   });
 
 });
