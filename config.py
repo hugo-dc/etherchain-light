@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import argparse, json, sys, binascii
 
 parser = argparse.ArgumentParser(description='Preload a Geth genesis with contract accounts')
