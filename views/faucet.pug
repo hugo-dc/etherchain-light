@@ -77,7 +77,6 @@ block content
         window.location.hash = "#transaction";
       }
     }
-
     async function enableEthereum() {
       if (window.ethereum) {
         metamask = new Web3(window.ethereum);
@@ -88,12 +87,10 @@ block content
         }
       }
     }
-
     window.addEventListener('load', async () => {
       await enableEthereum();
+      validateChainId(!{JSON.stringify(data.chainId)}, !{JSON.stringify(data.rpcUrlSuggestion)});
       showTransactionDiv();
       getAccount();
       getBalance();
     })
-
-  

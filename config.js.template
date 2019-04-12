@@ -16,6 +16,8 @@ var config = function (endpoint) {
   }
   this.faucetAddress = "{faucetAddress}";
   this.privateKey = new Buffer('{privateKey}', 'hex');
+  this.chainId = "{chainId}";
+  this.rpcUrlSuggestion = "{rpcUrlSuggestion}";
   this.blockCount = {blockCount};
 }
 
